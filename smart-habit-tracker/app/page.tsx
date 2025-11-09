@@ -1,15 +1,34 @@
-export default function Home(){
+import { PrismaClient } from "../src/generated/client";
+import { toggleLog } from "./actions/toggleLog";
+
+const prisma = new PrismaClient();
+
+export default async function Home() {
+  const habits = await prisma.habit.findMany({
+    include: { logs: true },
+    orderBy: { createdAt: "asc" },
+  });
+
   return (
-    <main>
-      <section>
-        <h2 className="text-xl font-semibold mb-4">Welcome to Smart Habit Tracker</h2>
-        <p className="mb-6">
-          Track your habits effectively with our intuitive and user-friendly application.
-        </p>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-          Get Started
-        </button>
-      </section>
+    <main className="space-y-4">
+      {habits.map(habit => {
+        const isDoneToday = habit.logs.some(
+          log => log.dayLocal === new Date().toISOString().slice(0, 10)
+        );
+        return (
+          <form key={habit.id} action={toggleLog.bind(null, habit.id)}>
+            <button
+              type="submit"
+              className={`w-full flex justify-between items-center border p-4 rounded-lg ${
+                isDoneToday ? "bg-green-200" : "bg-white"
+              }`}
+            >
+              <span>{habit.title}</span>
+              <span>{isDoneToday ? "✅" : "⬜"}</span>
+            </button>
+          </form>
+        );
+      })}
     </main>
-  )
+  );
 }
