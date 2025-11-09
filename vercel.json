@@ -1,7 +1,0 @@
-{
-  "buildCommand": "cd smart-habit-tracker && npm run build",
-  "devCommand": "cd smart-habit-tracker && npm run dev",
-  "installCommand": "cd smart-habit-tracker && npm install",
-  "framework": "nextjs",
-  "outputDirectory": "smart-habit-tracker/.next"
-}
