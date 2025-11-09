@@ -1,16 +1,10 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { PrismaClient } from "../../src/generated/client";
 import { todayInManila } from "@/lib/day";
 
 const prisma = new PrismaClient();
 
-/**
- * Server action to toggle a habit log for today.
- * Creates a log if it doesn't exist, deletes if it does.
- * Automatically refreshes the page after mutation.
- */
 export async function toggleLog(habitId: string) {
   const dayLocal = todayInManila();
 
@@ -30,7 +24,4 @@ export async function toggleLog(habitId: string) {
       data: { habitId, dayLocal },
     });
   }
-
-  // Revalidate the homepage so streaks & checkboxes update
-  revalidatePath("/");
 }

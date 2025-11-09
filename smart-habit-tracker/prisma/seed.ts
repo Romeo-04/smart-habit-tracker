@@ -1,43 +1,70 @@
 // prisma/seed.ts
 import 'dotenv/config';
-import { PrismaClient } from '../src/generated/client';
-import { Cadence } from '../src/generated/enums';
+import { formatInTimeZone } from 'date-fns-tz';
+import { addDays } from 'date-fns';
+import { PrismaClient, Cadence } from '../src/generated/client';
 
 const prisma = new PrismaClient();
+const TZ = 'Asia/Manila';
+
+function ymd(d: Date) {
+  return formatInTimeZone(d, TZ, 'yyyy-MM-dd');
+}
 
 async function main() {
-  const user = await prisma.user.upsert({
-    where: { email: 'demo@example.com' },
-    create: { email: 'demo@example.com', name: 'Demo User' },
-    update: {},
-  });
+  // Clean slate (dev-only)
+  await prisma.habitLog.deleteMany({});
+  await prisma.habit.deleteMany({});
+  await prisma.user.deleteMany({});
 
-  // two habits: one daily, one weekly(4)
-  const daily = await prisma.habit.upsert({
-    where: { id: 'seed-daily' },
-    update: {},
-    create: {
-      id: 'seed-daily',
-      userId: user.id,
-      title: 'Drink Water',
-      cadence: Cadence.daily,
-      targetPerWeek: 7,
+  const user = await prisma.user.create({
+    data: {
+      email: 'demo@example.com',
+      name: 'Demo User',
     },
   });
 
-  const weekly = await prisma.habit.upsert({
-    where: { id: 'seed-weekly' },
-    update: {},
-    create: {
-      id: 'seed-weekly',
+  const dailyHabit = await prisma.habit.create({
+    data: {
       userId: user.id,
-      title: 'Run 20 mins',
-      cadence: Cadence.weekly,
+      title: 'Drink Water',
+      cadence: Cadence.daily,       // <-- enum, must exist in schema
+      targetPerWeek: 7,             // daily semantics
+    },
+  });
+
+  const weeklyHabit = await prisma.habit.create({
+    data: {
+      userId: user.id,
+      title: 'Run 4x/Week',
+      cadence: Cadence.weekly,      // <-- enum, must exist in schema
       targetPerWeek: 4,
     },
   });
 
-  console.log('Seeded:', { user: user.email, daily: daily.title, weekly: weekly.title });
+  const today = new Date();
+  const d0 = ymd(today);
+  const d1 = ymd(addDays(today, -1));
+  const d2 = ymd(addDays(today, -2));
+
+  // A few logs for display
+  await prisma.habitLog.createMany({
+    data: [
+      { habitId: dailyHabit.id, dayLocal: d0 },
+      { habitId: dailyHabit.id, dayLocal: d1 },
+      { habitId: dailyHabit.id, dayLocal: d2 },
+
+      { habitId: weeklyHabit.id, dayLocal: d0 },
+      { habitId: weeklyHabit.id, dayLocal: d2 },
+    ],
+  });
+
+  const [habitCount, logCount] = await Promise.all([
+    prisma.habit.count({ where: { userId: user.id } }),
+    prisma.habitLog.count({ where: { habitId: { in: [dailyHabit.id, weeklyHabit.id] } } }),
+  ]);
+
+  console.log(`Seeded user=${user.email} habits=${habitCount} logs=${logCount}`);
 }
 
 main()

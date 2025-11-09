@@ -1,24 +1,104 @@
+# 🎯 Smart Habit Tracker
+
+A beautiful, full-stack habit tracking app built with **Next.js 16**, **TypeScript**, **Prisma**, and **Tailwind CSS**. Track daily and weekly habits, build streaks, and gain insights into your progress!
+
+## ✨ Features
+
+- ✅ **Daily & Weekly Habits** - Track different cadences
+- 🔥 **Streak Tracking** - See your current and best streaks
+- 📊 **Insights Dashboard** - View completion rates and statistics
+- 🌏 **Timezone-Aware** - Uses Asia/Manila timezone
+- 🎨 **Beautiful UI** - Tailwind CSS with smooth animations
+- ⚡ **Server Actions** - Fast, type-safe mutations with React 19
+- 🧪 **Tested** - Streak logic covered with Vitest tests
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Database:** SQLite with Prisma ORM
+- **Styling:** Tailwind CSS v4
+- **Validation:** Zod
+- **Testing:** Vitest
+- **Date Handling:** date-fns & date-fns-tz
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## 📦 Installation
 
-First, run the development server:
+```bash
+# Clone the repository
+git clone https://github.com/Romeo-04/smart-habit-tracker.git
+cd smart-habit-tracker
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+# Create .env file with:
+DATABASE_URL="file:C:/Users/YourName/Documents/Smart-Habit-Tracker/smart-habit-tracker/prisma/dev.db"
+
+# Generate Prisma client
+npm run generate
+
+# Run database migrations
+npm run migrate
+
+# Seed the database with sample habits
+npm run seed
+```
+
+## 🚀 Getting Started
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see your app!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+├── page.tsx                    # Homepage with habit list
+├── insights/
+│   └── page.tsx               # Insights & stats page
+├── actions/
+│   ├── toggleLog.ts           # Server action to toggle habits
+│   └── createHabit.ts         # Server action to create habits
+└── _components/
+    └── CreateHabitForm.tsx    # Client component for form
+
+lib/
+├── day.ts                     # Timezone utilities (Manila)
+├── streak.ts                  # Streak calculation logic
+└── streak.test.ts             # Vitest tests
+
+prisma/
+├── schema.prisma              # Database schema
+└── seed.ts                    # Seed script
+```
+
+## 🧪 Testing
+
+Run tests:
+
+```bash
+npm test
+```
+
+## 🎓 What I Learned
+
+- **Server Components vs Client Components** - When to use each
+- **Server Actions** - Type-safe mutations without API routes
+- **Prisma ORM** - Schema design with unique constraints
+- **Timezone Handling** - Using date-fns-tz for consistent dates
+- **Streak Algorithms** - Daily and weekly streak calculations
+- **Test-Driven Development** - Writing tests first with Vitest
+- **Zod Validation** - Type-safe form validation
+- **Progressive Enhancement** - Forms work without JavaScript
 
 ## Learn More
 
