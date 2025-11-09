@@ -23,7 +23,7 @@ export default async function Home() {
   const today = todayInManila();
 
   return (
-    <main className=" bg-blue-950">
+    <main className="">
       <div className="max-w-xl mx-auto ">
         <header className="mb-8">
           <div className="flex items-center justify-between mb-4">
