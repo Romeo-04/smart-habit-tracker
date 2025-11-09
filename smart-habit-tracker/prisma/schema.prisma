@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Cadence {
+  daily
+  weekly
+}
+
+model User {
+  id        String    @id@default(cuid())
+  email     String    @unique
+  name      String?
+  createdAt DateTime  @default(now())
+
+  habits    Habit[]
+}
+
+model Habit {
+  id            String    @id@default(cuid())
+  userId        String    
+  user          User      @relation(fields: [userId], references: [id],onDelete: Cascade)
+
+  title         String    
+  cadence       Cadence   @default(daily)
+
+  targetPerWeek Int       @default(7)
+
+  createdAt     DateTime  @default(now())
+  logs          HabitLog[]
+
+  @@index([userId,createdAt])
+}
+
+model HabitLog {
+  id            String    @id@default(cuid())
+  habitId       String
+  habit         Habit     @relation(fields: [habitId], references : [id],onDelete : Cascade)
+
+// Get local day from Manila 'YYYY-MM-DD'
+  dayLocal      String  
+  createdAt     DateTime  @default(now())
+
+// Di pwede duplicate
+  @@unique([habitId,dayLocal])
+  @@index([dayLocal])
+}
