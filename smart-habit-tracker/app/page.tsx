@@ -43,13 +43,13 @@ export default async function Home() {
         </header>
 
         <div className="space-y-3">
-          {habits.map(habit => {
+          {habits.map((habit) => {
             const isDoneToday = habit.logs.some(
-              log => log.dayLocal === today
+              (log) => log.dayLocal === today
             );
             
             // Calculate streak based on cadence
-            const dayLogs = habit.logs.map(log => log.dayLocal);
+            const dayLogs = habit.logs.map((log) => log.dayLocal);
             const currentStreak = habit.cadence === 'daily'
               ? computeDailyStreak(dayLogs, today)
               : computeWeeklyStreak(dayLogs, habit.targetPerWeek, today);
