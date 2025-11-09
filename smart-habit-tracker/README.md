@@ -100,6 +100,18 @@ npm test
 - **Zod Validation** - Type-safe form validation
 - **Progressive Enhancement** - Forms work without JavaScript
 
+## 🚀 Deployment
+
+Ready to deploy to production? See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
+
+**Quick Deploy with Vercel:**
+1. Push to GitHub
+2. Import on [vercel.com](https://vercel.com)
+3. Add Vercel Postgres database
+4. Deploy! 🎉
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Romeo-04/smart-habit-tracker)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

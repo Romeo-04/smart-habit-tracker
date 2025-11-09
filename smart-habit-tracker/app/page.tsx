@@ -3,6 +3,7 @@ import { toggleLog } from "./actions/toggleLog";
 import { todayInManila } from "@/lib/day";
 import { computeDailyStreak, computeWeeklyStreak } from "@/lib/streak";
 import { CreateHabitForm } from "./_components/CreateHabitForm";
+import { DeleteHabitButton } from "./_components/DeleteHabitButton";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -54,44 +55,49 @@ export default async function Home() {
               : computeWeeklyStreak(dayLogs, habit.targetPerWeek, today);
 
             return (
-              <form key={habit.id} action={toggleLog.bind(null, habit.id)}>
-                <button
-                  type="submit"
-                  className={`w-full p-5 rounded-xl border-2 transition-all duration-200 shadow-md hover:shadow-lg ${
-                    isDoneToday 
-                      ? "bg-green-50 border-green-400 hover:bg-green-100" 
-                      : "bg-white border-gray-200 hover:border-gray-300"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="text-3xl">
-                        {isDoneToday ? "✅" : "⬜"}
-                      </span>
-                      <div className="text-left">
-                        <h3 className="text-lg font-semibold text-gray-800">
-                          {habit.title}
-                        </h3>
-                        <p className="text-sm text-gray-500">
-                          {habit.cadence === 'daily' 
-                            ? 'Daily habit' 
-                            : `${habit.targetPerWeek}x per week`
-                          }
-                        </p>
-                      </div>
-                    </div>
-                    
-                    {currentStreak > 0 && (
-                      <div className="flex items-center gap-2 bg-orange-100 px-3 py-1 rounded-full">
-                        <span className="text-2xl">🔥</span>
-                        <span className="font-bold text-orange-600">
-                          {currentStreak}
+              <div key={habit.id} className="relative group">
+                <form action={toggleLog.bind(null, habit.id)}>
+                  <button
+                    type="submit"
+                    className={`w-full p-5 rounded-xl border-2 transition-all duration-200 shadow-md hover:shadow-lg ${
+                      isDoneToday 
+                        ? "bg-green-50 border-green-400 hover:bg-green-100" 
+                        : "bg-white border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <span className="text-3xl">
+                          {isDoneToday ? "✅" : "⬜"}
                         </span>
+                        <div className="text-left">
+                          <h3 className="text-lg font-semibold text-gray-800">
+                            {habit.title}
+                          </h3>
+                          <p className="text-sm text-gray-500">
+                            {habit.cadence === 'daily' 
+                              ? 'Daily habit' 
+                              : `${habit.targetPerWeek}x per week`
+                            }
+                          </p>
+                        </div>
                       </div>
-                    )}
-                  </div>
-                </button>
-              </form>
+                      
+                      {currentStreak > 0 && (
+                        <div className="flex items-center gap-2 bg-orange-100 px-3 py-1 rounded-full">
+                          <span className="text-2xl">🔥</span>
+                          <span className="font-bold text-orange-600">
+                            {currentStreak}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </button>
+                </form>
+                
+                {/* Delete button */}
+                <DeleteHabitButton habitId={habit.id} habitTitle={habit.title} />
+              </div>
             );
           })}
 
