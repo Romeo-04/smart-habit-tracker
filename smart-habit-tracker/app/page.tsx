@@ -1,4 +1,4 @@
-import { PrismaClient } from "../src/generated/client";
+import { PrismaClient } from "@prisma/client";
 import { toggleLog } from "./actions/toggleLog";
 import { todayInManila } from "@/lib/day";
 import { computeDailyStreak, computeWeeklyStreak } from "@/lib/streak";

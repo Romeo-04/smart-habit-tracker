@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { PrismaClient } from "../../src/generated/client";
+import { PrismaClient } from "@prisma/client";
 import { todayInManila } from "@/lib/day";
 
 const prisma = new PrismaClient();

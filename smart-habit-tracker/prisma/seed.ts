@@ -2,7 +2,7 @@
 import 'dotenv/config';
 import { formatInTimeZone } from 'date-fns-tz';
 import { addDays } from 'date-fns';
-import { PrismaClient, Cadence } from '../src/generated/client';
+import { PrismaClient, Cadence } from '@prisma/client';
 
 const prisma = new PrismaClient();
 const TZ = 'Asia/Manila';

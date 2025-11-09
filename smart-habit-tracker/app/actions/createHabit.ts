@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { PrismaClient } from "../../src/generated/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 

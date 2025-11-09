@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../src/generated/client";
+import { PrismaClient } from "@prisma/client";
 import { todayInManila } from "@/lib/day";
 import { computeDailyStreak, computeWeeklyStreak, computeLongestStreak } from "@/lib/streak";
 import Link from "next/link";
