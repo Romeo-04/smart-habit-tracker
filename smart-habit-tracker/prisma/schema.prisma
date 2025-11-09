@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client"
+  output   = "../src/generated"
 }
 
 datasource db {
@@ -19,40 +20,41 @@ enum Cadence {
 }
 
 model User {
-  id        String    @id@default(cuid())
-  email     String    @unique
+  id        String   @id @default(cuid())
+  email     String   @unique
   name      String?
-  createdAt DateTime  @default(now())
+  createdAt DateTime @default(now())
 
-  habits    Habit[]
+  habits Habit[]
 }
 
 model Habit {
-  id            String    @id@default(cuid())
-  userId        String    
-  user          User      @relation(fields: [userId], references: [id],onDelete: Cascade)
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  title         String    
-  cadence       Cadence   @default(daily)
+  title   String
+  cadence Cadence @default(daily)
 
-  targetPerWeek Int       @default(7)
+  targetPerWeek Int @default(7)
 
-  createdAt     DateTime  @default(now())
-  logs          HabitLog[]
+  createdAt DateTime   @default(now())
+  logs      HabitLog[]
 
-  @@index([userId,createdAt])
+  @@index([userId, createdAt])
 }
 
 model HabitLog {
-  id            String    @id@default(cuid())
-  habitId       String
-  habit         Habit     @relation(fields: [habitId], references : [id],onDelete : Cascade)
+  id      String @id @default(cuid())
+  habitId String
+  habit   Habit  @relation(fields: [habitId], references: [id], onDelete: Cascade)
 
-// Get local day from Manila 'YYYY-MM-DD'
-  dayLocal      String  
-  createdAt     DateTime  @default(now())
+  // Get local day from Manila 'YYYY-MM-DD'
+  dayLocal  String
+  createdAt DateTime @default(now())
 
-// Di pwede duplicate
-  @@unique([habitId,dayLocal])
+  // Di pwede duplicate
+  @@unique([habitId, dayLocal])
   @@index([dayLocal])
+  @@index([habitId, dayLocal])
 }
