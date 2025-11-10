@@ -32,9 +32,9 @@ export default async function Home() {
             </h1>
             <Link 
               href="/insights"
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+              className="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
             >
-              📊 Insights
+              Insights
             </Link>
           </div>
           <p className="text-gray-600">
@@ -43,13 +43,13 @@ export default async function Home() {
         </header>
 
         <div className="space-y-3">
-          {habits.map(habit => {
+          {habits.map((habit) => {
             const isDoneToday = habit.logs.some(
-              log => log.dayLocal === today
+              (log) => log.dayLocal === today
             );
             
             // Calculate streak based on cadence
-            const dayLogs = habit.logs.map(log => log.dayLocal);
+            const dayLogs = habit.logs.map((log) => log.dayLocal);
             const currentStreak = habit.cadence === 'daily'
               ? computeDailyStreak(dayLogs, today)
               : computeWeeklyStreak(dayLogs, habit.targetPerWeek, today);

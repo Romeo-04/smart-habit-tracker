@@ -18,10 +18,10 @@ export function DeleteHabitButton({ habitId, habitTitle }: DeleteHabitButtonProp
     <form action={handleDelete} className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
       <button
         type="submit"
-        className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-lg"
+        className="pt-1 pb-1 pl-2 pr-2 bg-gray-900/30 text-white rounded-lg hover:bg-red-500 transition-colors shadow-lg"
         title="Delete habit"
       >
-        🗑️
+        X
       </button>
     </form>
   );
