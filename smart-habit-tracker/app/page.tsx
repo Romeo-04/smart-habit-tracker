@@ -32,9 +32,9 @@ export default async function Home() {
             </h1>
             <Link 
               href="/insights"
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+              className="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
             >
-              📊 Insights
+              Insights
             </Link>
           </div>
           <p className="text-gray-600">
