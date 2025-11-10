@@ -11,7 +11,7 @@ import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Smart Habit Tracker",
-  description: "Track your daily habits and build streaks with intelligent insights",
+  description: "Track your daily habits and build lasting streaks with intelligent insights",
 };
 
 // Force dynamic rendering - don't cache this page
