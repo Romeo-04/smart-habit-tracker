@@ -11,6 +11,7 @@
     "migrate": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "seed": "tsx prisma/seed.ts",
+    "seed:prod": "tsx scripts/seed-production.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "postinstall": "prisma generate"
