@@ -14,24 +14,33 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   pages: {
     signIn: "/auth/signin",
+    error: "/auth/error",
   },
   callbacks: {
     async signIn({ user }) {
-      if (!user.email) return false;
-      
-      // Create or update user in database
-      await prisma.user.upsert({
-        where: { email: user.email },
-        update: {
-          name: user.name,
-        },
-        create: {
-          email: user.email,
-          name: user.name,
-        },
-      });
-      
-      return true;
+      try {
+        if (!user.email) {
+          console.error("No email provided for user");
+          return false;
+        }
+        
+        // Create or update user in database
+        await prisma.user.upsert({
+          where: { email: user.email },
+          update: {
+            name: user.name,
+          },
+          create: {
+            email: user.email,
+            name: user.name,
+          },
+        });
+        
+        return true;
+      } catch (error) {
+        console.error("Error in signIn callback:", error);
+        return false;
+      }
     },
     async session({ session, token }) {
       if (session.user && token.email) {
