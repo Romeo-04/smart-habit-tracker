@@ -4,20 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma migrate deploy && next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
-    "generate": "prisma generate",
-    "migrate": "prisma migrate dev",
-    "migrate:deploy": "prisma migrate deploy",
-    "seed": "tsx prisma/seed.ts",
-    "seed:prod": "tsx scripts/seed-production.ts",
     "test": "vitest",
-    "test:ui": "vitest --ui",
-    "postinstall": "prisma generate"
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^2.11.1",
     "@prisma/client": "^6.19.0",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
