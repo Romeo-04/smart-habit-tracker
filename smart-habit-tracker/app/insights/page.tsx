@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import Link from "next/link";
 import { subDays, format } from "date-fns";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Insights & Stats | Smart Habit Tracker",
@@ -21,7 +22,7 @@ export default async function InsightsPage() {
   const session = await auth();
   
   if (!session?.user?.email) {
-    return null; // Middleware will redirect
+    redirect("/auth/signin");
   }
 
   const user = await prisma.user.findUnique({
@@ -29,7 +30,7 @@ export default async function InsightsPage() {
   });
 
   if (!user) {
-    return null;
+    redirect("/auth/signin");
   }
 
   // Get only this user's habits

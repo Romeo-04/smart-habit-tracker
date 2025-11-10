@@ -7,6 +7,7 @@ import { DeleteHabitButton } from "./_components/DeleteHabitButton";
 import { signOut, auth } from "@/auth";
 import Link from "next/link";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Smart Habit Tracker",
@@ -23,7 +24,7 @@ export default async function Home() {
   const session = await auth();
   
   if (!session?.user?.email) {
-    return null; // Middleware will redirect to sign-in
+    redirect("/auth/signin");
   }
 
   // Get user from database
@@ -32,7 +33,7 @@ export default async function Home() {
   });
 
   if (!user) {
-    return null;
+    redirect("/auth/signin");
   }
 
   // Get only this user's habits
