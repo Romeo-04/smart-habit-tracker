@@ -5,11 +5,18 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  debug: true, // Enable debug logging
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      checks: ["none"], // Disable all OAuth checks to fix Vercel cookie issues
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
     }),
   ],
   pages: {
