@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   description: "View your habit statistics, streaks, and completion rates",
 };
 
+// Force dynamic rendering - don't cache this page
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const prisma = new PrismaClient();
 
 export default async function InsightsPage() {

@@ -67,8 +67,9 @@ export async function createHabit(
       },
     });
 
-    // Refresh the page to show new habit
+    // Refresh pages to show new habit
     revalidatePath("/");
+    revalidatePath("/insights");
 
     return { success: true };
   } catch (error) {

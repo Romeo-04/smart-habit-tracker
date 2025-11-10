@@ -18,6 +18,7 @@ export async function deleteHabit(habitId: string) {
     });
 
     revalidatePath("/");
+    revalidatePath("/insights");
   } catch (error) {
     console.error("Failed to delete habit:", error);
   }

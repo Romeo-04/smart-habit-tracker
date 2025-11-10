@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   description: "Track your daily habits and build streaks with intelligent insights",
 };
 
+// Force dynamic rendering - don't cache this page
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const prisma = new PrismaClient();
 
 export default async function Home() {

@@ -31,6 +31,7 @@ export async function toggleLog(habitId: string) {
     });
   }
 
-  // Revalidate the homepage so streaks & checkboxes update
+  // Revalidate pages so streaks & checkboxes update
   revalidatePath("/");
+  revalidatePath("/insights");
 }
