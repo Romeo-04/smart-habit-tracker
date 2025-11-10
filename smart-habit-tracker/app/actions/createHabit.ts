@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { PrismaClient } from "@prisma/client";
+import { auth } from "@/auth";
 
 const prisma = new PrismaClient();
 
@@ -43,18 +44,18 @@ export async function createHabit(
     // Validate with Zod
     const validated = createHabitSchema.parse(rawData);
 
-    // Get or create demo user (in real app, use auth session)
-    let user = await prisma.user.findUnique({
-      where: { email: "demo@example.com" },
+    // Get authenticated user
+    const session = await auth();
+    if (!session?.user?.email) {
+      return { error: "You must be logged in to create habits" };
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
     });
 
     if (!user) {
-      user = await prisma.user.create({
-        data: {
-          email: "demo@example.com",
-          name: "Demo User",
-        },
-      });
+      return { error: "User not found" };
     }
 
     // Create the habit

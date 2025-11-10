@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { todayInManila } from "@/lib/day";
 import { computeDailyStreak, computeWeeklyStreak, computeLongestStreak } from "@/lib/streak";
+import { auth } from "@/auth";
 import Link from "next/link";
 import { subDays, format } from "date-fns";
 import { Metadata } from "next";
@@ -17,7 +18,23 @@ export const revalidate = 0;
 const prisma = new PrismaClient();
 
 export default async function InsightsPage() {
+  const session = await auth();
+  
+  if (!session?.user?.email) {
+    return null; // Middleware will redirect
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
+
+  if (!user) {
+    return null;
+  }
+
+  // Get only this user's habits
   const habits = await prisma.habit.findMany({
+    where: { userId: user.id },
     include: { logs: true },
     orderBy: { createdAt: "asc" },
   });

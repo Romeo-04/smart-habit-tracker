@@ -4,6 +4,7 @@ import { todayInManila } from "@/lib/day";
 import { computeDailyStreak, computeWeeklyStreak } from "@/lib/streak";
 import { CreateHabitForm } from "./_components/CreateHabitForm";
 import { DeleteHabitButton } from "./_components/DeleteHabitButton";
+import { signOut, auth } from "@/auth";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -19,7 +20,24 @@ export const revalidate = 0;
 const prisma = new PrismaClient();
 
 export default async function Home() {
+  const session = await auth();
+  
+  if (!session?.user?.email) {
+    return null; // Middleware will redirect to sign-in
+  }
+
+  // Get user from database
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+  });
+
+  if (!user) {
+    return null;
+  }
+
+  // Get only this user's habits
   const habits = await prisma.habit.findMany({
+    where: { userId: user.id },
     include: { logs: true },
     orderBy: { createdAt: "asc" },
   });
@@ -31,15 +49,35 @@ export default async function Home() {
       <div className="max-w-xl mx-auto ">
         <header className="mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-4xl font-bold text-gray-800">
-              Smart Habit Tracker
-            </h1>
-            <Link 
-              href="/insights"
-              className="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
-            >
-              Insights
-            </Link>
+            <div>
+              <h1 className="text-4xl font-bold text-gray-800">
+                Smart Habit Tracker
+              </h1>
+              <p className="text-sm text-gray-500 mt-1">
+                Welcome, {session.user.name || session.user.email}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Link 
+                href="/insights"
+                className="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+              >
+                Insights
+              </Link>
+              <form
+                action={async () => {
+                  "use server";
+                  await signOut({ redirectTo: "/auth/signin" });
+                }}
+              >
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-semibold"
+                >
+                  Sign Out
+                </button>
+              </form>
+            </div>
           </div>
           <p className="text-gray-600">
             Today: {today} • Manila Time
