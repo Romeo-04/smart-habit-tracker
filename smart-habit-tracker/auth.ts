@@ -5,19 +5,12 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  debug: process.env.NODE_ENV === "development", // Only debug in dev
+  debug: true, // Enable debug to see what's failing
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
-      // Explicitly allow HTTP for localhost, HTTPS for production
+      checks: ["none"], // Disable PKCE and state checks - fixes Vercel serverless issues
       allowDangerousEmailAccountLinking: true,
     }),
   ],
