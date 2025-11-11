@@ -81,7 +81,7 @@ export default async function InsightsPage() {
         {/* Header */}
         <header className="mb-8">
           <Link 
-            href="/" 
+            href="/dashboard" 
             className="inline-flex items-center text-indigo-600 hover:text-indigo-800 mb-4"
           >
             ← Back to Dashboard
@@ -171,7 +171,7 @@ export default async function InsightsPage() {
             <div className="text-center py-12 bg-white rounded-xl border-2 border-dashed border-gray-300">
               <p className="text-gray-500 text-lg mb-2">No habits yet!</p>
               <Link 
-                href="/" 
+                href="/dashboard" 
                 className="text-indigo-600 hover:text-indigo-800 underline"
               >
                 Go create your first habit →

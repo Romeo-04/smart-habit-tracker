@@ -1,12 +1,6 @@
 import Link from "next/link";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Smart Habit Tracker - Build Better Habits",
-  description: "Track your daily and weekly habits with intelligent streak tracking. Stay motivated with real-time insights.",
-};
-
-export default function Home() {
+export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Navigation */}

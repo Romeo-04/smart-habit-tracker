@@ -28,7 +28,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }
         
         // Create or update user in database
-        await prisma.user.upsert({
+        const dbUser = await prisma.user.upsert({
           where: { email: user.email },
           update: {
             name: user.name,
@@ -39,22 +39,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           },
         });
         
+        // Store the database user ID in the user object
+        user.id = dbUser.id;
+        
         return true;
       } catch (error) {
         console.error("Error in signIn callback:", error);
         return false;
       }
     },
+    async jwt({ token, user }) {
+      // Store user data in JWT token on first sign in
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+      }
+      return token;
+    },
     async session({ session, token }) {
-      if (session.user && token.email) {
-        // Get user from database
-        const dbUser = await prisma.user.findUnique({
-          where: { email: token.email },
-        });
-        
-        if (dbUser) {
-          session.user.id = dbUser.id;
-        }
+      // Pass user data from JWT to session (no database call)
+      if (token) {
+        session.user.id = token.id as string;
+        session.user.email = token.email as string;
+        session.user.name = token.name as string;
       }
       return session;
     },

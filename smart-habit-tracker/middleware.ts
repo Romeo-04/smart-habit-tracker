@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
-// Edge runtime middleware - can't use Prisma database adapter here
-// Auth checks will be done in pages and server actions
+// Simple middleware - auth checks are done in individual pages
 export function middleware() {
   return NextResponse.next();
 }

@@ -5,9 +5,9 @@ import { auth } from "@/auth";
 export default async function SignInPage() {
   const session = await auth();
   
-  // If already logged in, redirect to home
+  // If already logged in, redirect to dashboard
   if (session?.user) {
-    redirect("/");
+    redirect("/dashboard");
   }
 
   return (
@@ -25,7 +25,7 @@ export default async function SignInPage() {
         <form
           action={async () => {
             "use server";
-            await signIn("google", { redirectTo: "/" });
+            await signIn("google", { redirectTo: "/dashboard" });
           }}
         >
           <button
