@@ -5,7 +5,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  debug: true, // Enable debug logging
+  debug: process.env.NODE_ENV === "development", // Only debug in dev
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -17,12 +17,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           response_type: "code",
         },
       },
+      // Explicitly allow HTTP for localhost, HTTPS for production
+      allowDangerousEmailAccountLinking: true,
     }),
   ],
   pages: {
     signIn: "/auth/signin",
     error: "/auth/error",
   },
+  useSecureCookies: process.env.NODE_ENV === "production",
   callbacks: {
     async signIn({ user }) {
       try {
@@ -65,16 +68,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   trustHost: true,
   cookies: {
-    pkceCodeVerifier: {
-      name: "next-auth.pkce.code_verifier",
+    sessionToken: {
+      name: `next-auth.session-token`,
       options: {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: true,
+        secure: process.env.NODE_ENV === "production",
+        domain: process.env.NODE_ENV === "production" ? ".vercel.app" : undefined,
       },
     },
   },
