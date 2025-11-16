@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
+    <div className="min-h-screen min-w-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
       {/* Navigation */}
-      <nav className="container mx-auto px-6 py-6">
+      <nav className="px-8 md:px-16 lg:px-24 py-6">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-800">Smart Habit Tracker</h1>
           <Link
@@ -17,8 +17,8 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <main className="container mx-auto px-6 py-20">
-        <div className="max-w-4xl mx-auto text-center">
+      <main className="px-8 md:px-16 lg:px-24 py-20">
+        <div className="text-center">
           {/* Hero Text */}
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Build Better Habits,
@@ -28,7 +28,7 @@ export default function LandingPage() {
             </span>
           </h2>
           
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-12">
             Track your daily and weekly habits with intelligent streak tracking. 
             Stay motivated with real-time insights and never break the chain.
           </p>
@@ -43,7 +43,7 @@ export default function LandingPage() {
         </div>
 
         {/* Features */}
-        <div className="mt-32 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="mt-32 grid md:grid-cols-3 gap-8">
           <div className="bg-white p-8 rounded-2xl shadow-lg">
             <div className="text-4xl mb-4">🎯</div>
             <h3 className="text-xl font-bold mb-2 text-gray-800">Daily & Weekly Goals</h3>
@@ -70,7 +70,7 @@ export default function LandingPage() {
         </div>
 
         {/* Social Proof / Benefits */}
-        <div className="mt-32 max-w-3xl mx-auto text-center">
+        <div className="mt-32 text-center">
           <h3 className="text-3xl font-bold text-gray-800 mb-8">
             Why Smart Habit Tracker?
           </h3>
@@ -117,7 +117,7 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="container mx-auto px-6 py-8 mt-20 border-t border-gray-200">
+      <footer className="px-8 md:px-16 lg:px-24 py-8 mt-20 border-t border-gray-200">
         <div className="text-center text-gray-600">
           <p>© 2025 Smart Habit Tracker. Built with ❤️</p>
         </div>
