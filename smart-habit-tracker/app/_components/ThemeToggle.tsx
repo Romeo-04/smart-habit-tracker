@@ -4,24 +4,30 @@ import { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Check if user has a theme preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-    setIsDark(shouldBeDark);
     
     if (shouldBeDark) {
+      setIsDark(true);
       document.documentElement.classList.add('dark');
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(!isDark);
+    const newIsDark = !isDark;
+    setIsDark(newIsDark);
     
-    if (!isDark) {
+    if (newIsDark) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
@@ -29,6 +35,11 @@ export function ThemeToggle() {
       localStorage.setItem('theme', 'light');
     }
   };
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return <div className="p-2 w-9 h-9" />;
+  }
 
   return (
     <button

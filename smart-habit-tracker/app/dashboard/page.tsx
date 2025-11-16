@@ -57,7 +57,7 @@ export default async function Dashboard() {
 
   return (
     <main className="min-h-screen">
-      <div className="max-w-xl mx-auto px-4 py-6">
+      <div className="max-w-3xl mx-auto px-4 py-6">
         <header className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -84,7 +84,7 @@ export default async function Dashboard() {
               >
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold"
+                  className="px-4 py-2 min-w-[8rem] bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors font-semibold"
                 >
                   Sign Out
                 </button>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Smart Habit Tracker - Build Better Habits",
+  title: "TrackHab",
   description: "Track your daily and weekly habits with intelligent streak tracking. Stay motivated with real-time insights.",
 };
 
@@ -125,7 +125,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="container mx-auto px-6 py-8 mt-20 border-t border-gray-200">
         <div className="text-center text-gray-600">
-          <p>© 2025 Smart Habit Tracker. Built with ❤️</p>
+          <p>© 2025 TrackHab. Built by Jhezra Tolentino</p>
         </div>
       </footer>
     </div>
