@@ -3,7 +3,11 @@
 import { useActionState, useEffect, useRef } from "react";
 import { createHabit, type FormState } from "../actions/createHabit";
 
-export function CreateHabitForm() {
+interface CreateHabitFormProps {
+  onSuccess?: () => void;
+}
+
+export function CreateHabitForm({ onSuccess }: CreateHabitFormProps = {}) {
   const [state, formAction, isPending] = useActionState<FormState, FormData>(
     createHabit,
     {}
@@ -14,8 +18,9 @@ export function CreateHabitForm() {
   useEffect(() => {
     if (state.success) {
       formRef.current?.reset();
+      onSuccess?.();
     }
-  }, [state.success]);
+  }, [state.success, onSuccess]);
 
   return (
     <div className="bg-white rounded-xl border-2 border-gray-200 p-6 shadow-md">
@@ -86,7 +91,7 @@ export function CreateHabitForm() {
         {/* Success Message */}
         {state.success && (
           <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-            ✅ Habit created successfully!
+            Habit created successfully!
           </div>
         )}
 

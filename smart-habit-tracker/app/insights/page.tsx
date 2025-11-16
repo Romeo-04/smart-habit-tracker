@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 import { todayInManila } from "@/lib/day";
 import { computeDailyStreak, computeWeeklyStreak, computeLongestStreak } from "@/lib/streak";
 import { auth } from "@/auth";
+import { ThemeToggle } from "../_components/ThemeToggle";
+import { HabitHeatmap } from "../_components/HabitHeatmap";
 import Link from "next/link";
 import { subDays, format } from "date-fns";
 import { Metadata } from "next";
@@ -152,7 +154,7 @@ export default async function InsightsPage() {
               </div>
 
               {/* Completion Rate Progress Bar */}
-              <div>
+              <div className="mb-4">
                 <div className="flex justify-between text-xs text-gray-500 mb-1">
                   <span>Completion Rate</span>
                   <span>{habit.completionRate}%</span>
@@ -164,6 +166,12 @@ export default async function InsightsPage() {
                   />
                 </div>
               </div>
+
+              {/* Heatmap */}
+              <HabitHeatmap 
+                logs={habit.logs.map(log => log.dayLocal)} 
+                habitTitle={habit.title}
+              />
             </div>
           ))}
 
