@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,126 +9,121 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
+    <div className="min-h-screen bg-gray-900">
       {/* Navigation */}
-      <nav className="container mx-auto px-6 py-6">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">Smart Habit Tracker</h1>
+      <nav className="px-8 md:px-16 lg:px-24 py-6 flex justify-between items-center bg-gradient-to-b from-gray-800/80 to-transparent backdrop-blur-sm absolute top-0 left-0 right-0 z-10">
+        <div className="flex items-center space-x-3">
+          <Image src="/logo.png" alt="TrackHab Logo" width={48} height={48} />
+          <h1 className="text-3xl font-bold" style={{ fontFamily: 'monospace', color: '#5C3D2E' }}>
+            TrackHab
+          </h1>
+        </div>
+        <div className="flex space-x-8 items-center">
+          <Link
+            href="#features"
+            className="text-lg font-medium text-blue-900 hover:text-blue-700"
+          >
+            Start
+          </Link>
           <Link
             href="/auth/signin"
-            className="px-6 py-2 text-purple-600 hover:text-purple-700 font-medium"
+            className="text-lg font-medium text-blue-900 hover:text-blue-700"
           >
             Sign In
+          </Link>
+          <Link
+            href="#about"
+            className="text-lg font-medium text-blue-900 hover:text-blue-700"
+          >
+            About
           </Link>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <main className="container mx-auto px-6 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Hero Text */}
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Build Better Habits,
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
-              One Day at a Time
-            </span>
-          </h2>
-          
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Track your daily and weekly habits with intelligent streak tracking. 
-            Stay motivated with real-time insights and never break the chain.
+      {/* Hero Section - Quote with Mountain Background */}
+      <section 
+        className="relative h-screen flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: 'url(/images/mountain-bg.png)' }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-300/30 to-blue-400/50"></div>
+        <div className="relative z-10 text-center px-4 max-w-4xl">
+          <p className="text-5xl md:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
+            &ldquo;Every action you take is a vote for the type of person you wish to become.&rdquo;
           </p>
-
-          {/* CTA Button */}
-          <Link
-            href="/auth/signin"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-          >
-            Get Started for Free
-          </Link>
+          <p className="text-2xl font-medium" style={{ fontFamily: 'monospace', color: '#8B4513' }}>
+            - James Clear
+          </p>
         </div>
+      </section>
 
-        {/* Features */}
-        <div className="mt-32 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800">Daily & Weekly Goals</h3>
-            <p className="text-gray-600">
-              Set daily habits or flexible weekly targets. Choose what works best for you.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <div className="text-4xl mb-4">🔥</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800">Streak Tracking</h3>
-            <p className="text-gray-600">
-              Watch your streaks grow! See your current streak, longest streak, and total completions.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
-            <div className="text-4xl mb-4">📊</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800">Insights & Stats</h3>
-            <p className="text-gray-600">
-              Get detailed analytics on your progress with beautiful visualizations and completion rates.
-            </p>
-          </div>
-        </div>
-
-        {/* Social Proof / Benefits */}
-        <div className="mt-32 max-w-3xl mx-auto text-center">
-          <h3 className="text-3xl font-bold text-gray-800 mb-8">
-            Why Smart Habit Tracker?
-          </h3>
-          <div className="space-y-6 text-left">
-            <div className="flex items-start gap-4">
-              <div className="text-2xl">✅</div>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">Simple & Intuitive</h4>
-                <p className="text-gray-600">Clean interface that helps you focus on what matters - building habits.</p>
+      {/* Features Section - 3 Cards */}
+      <section id="features" className="relative py-20 bg-linear-to-b from-blue-300 to-gray-700">
+        <div className="container mx-auto px-8 md:px-16 lg:px-24">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Goals Card */}
+            <div className="bg-linear-to-b from-gray-100 to-gray-300 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform">
+              <div className="flex justify-center mb-6">
+                <Image src="/images/goals-icon.png" alt="Goals" width={128} height={128} className="object-contain" />
               </div>
+              <h3 className="text-3xl font-bold text-center mb-4" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
+                GOALS
+              </h3>
+              <p className="text-center text-gray-800 leading-relaxed" style={{ fontFamily: 'monospace' }}>
+                Set daily habits or flexible weekly targets. Choose what works best for you.
+              </p>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="text-2xl">✅</div>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">Always Accessible</h4>
-                <p className="text-gray-600">Sign in with Google and access your habits from any device, anywhere.</p>
+
+            {/* Streaks Card */}
+            <div className="bg-linear-to-b from-gray-100 to-gray-300 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform ">
+              <div className="flex justify-center mb-6">
+                <Image src="/images/streaks-icon.png" alt="Streaks" width={128} height={128} className="object-contain" />
               </div>
+              <h3 className="text-3xl font-bold text-center mb-4" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
+                STREAKS
+              </h3>
+              <p className="text-center text-gray-800 leading-relaxed" style={{ fontFamily: 'monospace' }}>
+                Watch your streaks grow! See your current streak, longest streak, and total completions.
+              </p>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="text-2xl">✅</div>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">Privacy First</h4>
-                <p className="text-gray-600">Your data is private and secure. Only you can see your habits and progress.</p>
+
+            {/* Insights Card */}
+            <div className="bg-linear-to-b from-gray-100 to-gray-300 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform">
+              <div className="flex justify-center mb-6">
+                <Image src="/images/insights-icon.png" alt="Insights" width={128} height={128} className="object-contain" />
               </div>
+              <h3 className="text-3xl font-bold text-center mb-4" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
+                INSIGHTS
+              </h3>
+              <p className="text-center text-gray-800 leading-relaxed" style={{ fontFamily: 'monospace' }}>
+                Get detailed analytics on your progress with beautiful visualizations and completion rates.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Final CTA */}
-        <div className="mt-32 text-center">
-          <h3 className="text-3xl font-bold text-gray-800 mb-4">
-            Ready to Start Your Journey?
-          </h3>
-          <p className="text-gray-600 mb-8">
+      {/* CTA Section - Are You Ready */}
+      <section 
+        className="relative py-32 bg-cover bg-center"
+        style={{ backgroundImage: 'url(/images/cta-bg.png)' }}
+      >
+        <div className="absolute inset-0 bg-linear-to-b from-blue-200/60 to-blue-300/60"></div>
+        <div className="relative z-10 text-center px-4">
+          <h2 className="text-6xl md:text-7xl font-bold mb-8" style={{ fontFamily: 'monospace', color: '#1a1a2e' }}>
+            Are you ready?
+          </h2>
+          <p className="text-2xl mb-12 font-medium" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
             Join and start building better habits today.
           </p>
           <Link
             href="/auth/signin"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+            className="inline-block px-16 py-5 bg-blue-600 hover:bg-blue-700 text-white text-2xl font-bold rounded-full shadow-2xl transition-all hover:scale-105"
+            style={{ fontFamily: 'monospace' }}
           >
-            Get Started for Free
+            SIGN UP
           </Link>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="container mx-auto px-6 py-8 mt-20 border-t border-gray-200">
-        <div className="text-center text-gray-600">
-          <p>© 2025 TrackHab. Built by Jhezra Tolentino</p>
-        </div>
-      </footer>
+      </section>
     </div>
   );
 }
