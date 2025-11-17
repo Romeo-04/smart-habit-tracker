@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 
 html, body, :root { 
@@ -7,7 +8,9 @@ html, body, :root {
 body { 
   background-color: #f9fafb;
   color: #111827;
-  -webkit-font-smoothing: antialiased;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 :root.dark body {

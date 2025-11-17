@@ -11,31 +11,31 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Navigation */}
-      <nav className="px-8 md:px-16 lg:px-24 py-6 flex justify-between items-center bg-gradient-to-b from-gray-800/80 to-transparent backdrop-blur-sm absolute top-0 left-0 right-0 z-10">
-        <div className="flex items-center space-x-3">
-          <Image src="/logo.png" alt="TrackHab Logo" width={48} height={48} />
-          <h1 className="text-3xl font-bold" style={{ fontFamily: 'monospace', color: '#5C3D2E' }}>
+      <nav className="px-8 md:px-16 lg:px-24 py-8 flex justify-between items-center bg-white/50 border-gray-900 absolute top-0 left-0 right-0 z-10">
+        <div className="flex items-center space-x-4">
+          <Image src="/logo.png" alt="TrackHab Logo" width={48} height={48} className="pixelated" />
+          <h1 className="text-4xl font-bold tracking-wider" style={{ fontFamily: '"Press Start 2P", monospace', color: '#800020' }}>
             TrackHab
           </h1>
         </div>
-        <div className="flex space-x-8 items-center">
+        <div className="flex space-x-15 items-center">
           <Link
             href="#features"
-            className="text-lg font-medium text-blue-900 hover:text-blue-700"
+            className="text-sm font-bold tracking-wider hover:opacity-70 transition-opacity" style={{ fontFamily: '"Press Start 2P", monospace', color: '#00008B' }}
           >
-            Start
+            START
           </Link>
           <Link
             href="/auth/signin"
-            className="text-lg font-medium text-blue-900 hover:text-blue-700"
+            className="text-sm font-bold tracking-wider text-gray-900 hover:text-blue-400 transition-colors" style={{ fontFamily: '"Press Start 2P", monospace', color: '#00008B' }}
           >
-            Sign In
+            SIGN IN
           </Link>
           <Link
             href="#about"
-            className="text-lg font-medium text-blue-900 hover:text-blue-700"
+            className="text-sm font-bold tracking-wider hover:opacity-70 transition-opacity" style={{ fontFamily: '"Press Start 2P", monospace', color: '#00008B' }}
           >
-            About
+            ABOUT
           </Link>
         </div>
       </nav>
@@ -45,57 +45,61 @@ export default function Home() {
         className="relative h-screen flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: 'url(/images/mountain-bg.png)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-300/30 to-blue-400/50"></div>
-        <div className="relative z-10 text-center px-4 max-w-4xl">
-          <p className="text-5xl md:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
-            &ldquo;Every action you take is a vote for the type of person you wish to become.&rdquo;
-          </p>
-          <p className="text-2xl font-medium" style={{ fontFamily: 'monospace', color: '#8B4513' }}>
+        <div className="absolute inset-0 bg-linear-to-b from-blue-100/50 to-blue-200/60"></div>
+        <div className="relative z-10 text-center px-8 max-w-screen">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold leading-relaxed mt-15 mb-12 drop-shadow-lg" style={{ fontFamily: '"Press Start 2P", monospace', color: '#1a1a1a', textShadow: '4px 4px 0px rgba(255,255,255,0.8)' }}>
+            &ldquo;Every action you take is a
+            <br />
+            vote for the type of person
+            <br />
+            you wish to become.&rdquo;
+          </div>
+          <div className="text-xl md:text-2xl font-bold" style={{ fontFamily: '"Press Start 2P", monospace', color: '#8B4513', textShadow: '2px 2px 0px rgba(255,255,255,0.8)' }}>
             - James Clear
-          </p>
+          </div>
         </div>
       </section>
 
       {/* Features Section - 3 Cards */}
-      <section id="features" className="relative py-20 bg-linear-to-b from-blue-300 to-gray-700">
+      <section id="features" className="relative py-24 bg-linear-to-b from-blue-400 to-blue-600" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px), repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px)' }}>
         <div className="container mx-auto px-8 md:px-16 lg:px-24">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {/* Goals Card */}
-            <div className="bg-linear-to-b from-gray-100 to-gray-300 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform">
-              <div className="flex justify-center mb-6">
-                <Image src="/images/goals-icon.png" alt="Goals" width={128} height={128} className="object-contain" />
+            <div className="bg-white border-8 border-gray-900 p-10 hover:translate-y-[-8px] transition-transform shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="flex justify-center mt-8 mb-15">
+                <Image src="/images/goals-icon.png" alt="Goals" width={128} height={128} className="pixelated" />
               </div>
-              <h3 className="text-3xl font-bold text-center mb-4" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
+              <h3 className="text-2xl font-bold text-center mb-6" style={{ fontFamily: '"Press Start 2P", monospace', color: '#1a1a1a' }}>
                 GOALS
               </h3>
-              <p className="text-center text-gray-800 leading-relaxed" style={{ fontFamily: 'monospace' }}>
-                Set daily habits or flexible weekly targets. Choose what works best for you.
+              <p className="text-center text-gray-800 leading-loose text-sm" style={{ fontFamily: '"Press Start 2P", monospace' }}>
+                Set daily habits or flexible weekly targets
               </p>
             </div>
 
             {/* Streaks Card */}
-            <div className="bg-linear-to-b from-gray-100 to-gray-300 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform ">
-              <div className="flex justify-center mb-6">
-                <Image src="/images/streaks-icon.png" alt="Streaks" width={128} height={128} className="object-contain" />
+            <div className="bg-white border-8 border-gray-900 p-10 hover:translate-y-[-8px] transition-transform shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="flex justify-center mb-8">
+                <Image src="/images/streaks-icon.png" alt="Streaks" width={128} height={128} className="pixelated" />
               </div>
-              <h3 className="text-3xl font-bold text-center mb-4" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
+              <h3 className="text-2xl font-bold text-center mb-6" style={{ fontFamily: '"Press Start 2P", monospace', color: '#1a1a1a' }}>
                 STREAKS
               </h3>
-              <p className="text-center text-gray-800 leading-relaxed" style={{ fontFamily: 'monospace' }}>
-                Watch your streaks grow! See your current streak, longest streak, and total completions.
+              <p className="text-center text-gray-800 leading-loose text-sm" style={{ fontFamily: '"Press Start 2P", monospace' }}>
+                Watch your streaks grow day by day
               </p>
             </div>
 
             {/* Insights Card */}
-            <div className="bg-linear-to-b from-gray-100 to-gray-300 rounded-3xl p-8 shadow-2xl hover:scale-105 transition-transform">
-              <div className="flex justify-center mb-6">
-                <Image src="/images/insights-icon.png" alt="Insights" width={128} height={128} className="object-contain" />
+            <div className="bg-white border-8 border-gray-900 p-10 hover:translate-y-[-8px] transition-transform shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="flex justify-center mb-8">
+                <Image src="/images/insights-icon.png" alt="Insights" width={128} height={128} className="pixelated" />
               </div>
-              <h3 className="text-3xl font-bold text-center mb-4" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
+              <h3 className="text-2xl font-bold text-center mb-6" style={{ fontFamily: '"Press Start 2P", monospace', color: '#1a1a1a' }}>
                 INSIGHTS
               </h3>
-              <p className="text-center text-gray-800 leading-relaxed" style={{ fontFamily: 'monospace' }}>
-                Get detailed analytics on your progress with beautiful visualizations and completion rates.
+              <p className="text-center text-gray-800 leading-loose text-sm" style={{ fontFamily: '"Press Start 2P", monospace' }}>
+                Track your progress with beautiful charts
               </p>
             </div>
           </div>
@@ -104,21 +108,21 @@ export default function Home() {
 
       {/* CTA Section - Are You Ready */}
       <section 
-        className="relative py-32 bg-cover bg-center"
+        className="relative py-40 bg-cover bg-center"
         style={{ backgroundImage: 'url(/images/cta-bg.png)' }}
       >
-        <div className="absolute inset-0 bg-linear-to-b from-blue-200/60 to-blue-300/60"></div>
-        <div className="relative z-10 text-center px-4">
-          <h2 className="text-6xl md:text-7xl font-bold mb-8" style={{ fontFamily: 'monospace', color: '#1a1a2e' }}>
+        <div className="absolute inset-0 bg-linear-to-b from-blue-50/80 to-blue-100/80"></div>
+        <div className="relative z-10 text-center px-8">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12" style={{ fontFamily: '"Press Start 2P", monospace', color: '#00008B', textShadow: '4px 4px 0px rgba(255,255,255,0.8)' }}>
             Are you ready?
           </h2>
-          <p className="text-2xl mb-12 font-medium" style={{ fontFamily: 'monospace', color: '#1a1a1a' }}>
-            Join and start building better habits today.
+          <p className="text-xl md:text-2xl mb-16 font-bold" style={{ fontFamily: '"Press Start 2P", monospace', color: '#1a1a1a', textShadow: '2px 2px 0px rgba(255,255,255,0.8)' }}>
+            Start building better habits today
           </p>
           <Link
             href="/auth/signin"
-            className="inline-block px-16 py-5 bg-blue-600 hover:bg-blue-700 text-white text-2xl font-bold rounded-full shadow-2xl transition-all hover:scale-105"
-            style={{ fontFamily: 'monospace' }}
+            className="inline-block px-12 py-6 bg-blue-400 hover:bg-blue-500 text-white text-xl border-4 border-gray-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-4px] transition-all"
+            style={{ fontFamily: '"Press Start 2P", monospace' }}
           >
             SIGN UP
           </Link>
