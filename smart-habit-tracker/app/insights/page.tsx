@@ -78,8 +78,8 @@ export default async function InsightsPage() {
     : 0;
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-purple-50 to-pink-100 p-6">
-      <div className="max-w-4xl mx-auto">
+    <main className="max-w-full bg-linear-to-br from-purple-50 to-pink-100 p-6">
+      <div className="max-w-4xl">
         {/* Header */}
         <header className="mb-8">
           <Link 
@@ -89,7 +89,7 @@ export default async function InsightsPage() {
             ← Back to Dashboard
           </Link>
           <h1 className="text-4xl font-bold text-gray-800 mb-2">
-            Insights & Stats 📊
+            Insights & Stats 
           </h1>
           <p className="text-gray-600">
             Track your progress and celebrate your wins!

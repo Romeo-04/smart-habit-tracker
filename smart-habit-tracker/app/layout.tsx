@@ -1,6 +1,17 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Inter, Merriweather } from "next/font/google";
 import Container from "./_components/Container";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  variable: "--font-merriweather",
+});
 
 export const metadata: Metadata = {
   title: "Smart Habit Tracker",
@@ -13,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="min-h-full">
+    <html lang="en" className={`${inter.variable} ${merriweather.variable}`} suppressHydrationWarning>
+      <body className={`min-h-full`}>
         <Container>{children}</Container>
       </body>
     </html>

@@ -11,29 +11,34 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen">
       {/* Navigation */}
-      <nav className="px-8 md:px-16 lg:px-24 py-8 flex justify-between items-center bg-white/50 border-gray-900 absolute top-0 left-0 right-0 z-10">
+      <nav className="px-8 md:px-16 lg:px-16 py-6 flex justify-between items-center absolute top-0 left-0 right-0 z-10">
         <div className="flex items-center space-x-4">
           <Image src="/logo.png" alt="TrackHab Logo" width={48} height={48} className="pixelated" />
-          <h1 className="text-4xl font-bold tracking-wider" style={{ fontFamily: '"Press Start 2P", monospace', color: '#800020' }}>
+          <h1 className="text-3xl font-bold tracking-wider inter" style={{ fontFamily: 'var(--font-sans)', color: '#000000' }}>
             TrackHab
           </h1>
         </div>
         <div className="flex space-x-4 items-center">
-          <Button variant="link" asChild>
-            <Link href="#features" className="text-sm font-bold tracking-wider" style={{ fontFamily: '"Press Start 2P", monospace', color: '#00008B' }}>
-              START
+          <Button variant="ghost" asChild>
+            <Link href="#features" className="text-lg font-bold tracking-wider" style={{ fontFamily: 'var(--font-sans)', color: '#000000' }}>
+              Features
             </Link>
           </Button>
-          <Button variant="link" asChild>
-            <Link href="/auth/signin" className="text-sm font-bold tracking-wider" style={{ fontFamily: '"Press Start 2P", monospace', color: '#00008B' }}>
-              SIGN IN
+          <Button variant="ghost" asChild>
+            <Link href="#about" className="text-lg font-bold tracking-wider" style={{ fontFamily: 'var(--font-sans)', color: '#000000' }}>
+              How It Works
             </Link>
           </Button>
-          <Button variant="link" asChild>
-            <Link href="#about" className="text-sm font-bold tracking-wider" style={{ fontFamily: '"Press Start 2P", monospace', color: '#00008B' }}>
-              ABOUT
+          <Button variant="ghost" asChild>
+            <Link href="#insights" className="text-lg font-bold tracking-wider" style={{ fontFamily: 'var(--font-sans)', color: '#000000' }}>
+              Insights
+            </Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link href="/auth/signin" className="text-lg font-bold tracking-wider" style={{ fontFamily: 'var(--font-sans)', color: '#000000' }}>
+              Get Started
             </Link>
           </Button>
         </div>
@@ -42,19 +47,17 @@ export default function Home() {
       {/* Hero Section - Quote with Mountain Background */}
       <section 
         className="relative h-screen flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/mountain-bg.png)' }}
       >
-        <div className="absolute inset-0 bg-linear-to-b from-blue-100/50 to-blue-200/60"></div>
+        <div className="absolute inset-0 bg-linear-to-b white/70
+        "></div>
         <div className="relative z-10 text-center px-8 max-w-screen">
-          <div className="text-2xl md:text-3xl lg:text-4xl font-bold leading-relaxed mt-15 mb-12 drop-shadow-lg" style={{ fontFamily: '"Press Start 2P", monospace', color: '#1a1a1a', textShadow: '4px 4px 0px rgba(255,255,255,0.8)' }}>
-            &ldquo;Every action you take is a
-            <br />
-            vote for the type of person
-            <br />
-            you wish to become.&rdquo;
+          <div className="text-3xl md:text-3xl lg:text-4xl font-bold leading-relaxed mt-15 mb-3 drop-shadow-lg" style={{ fontFamily: 'var(--font-sans)', color: '#ffffff', }}>
+            &ldquo;
+            We are what we repeatedly do. <br />
+            Excellence, then, is not an act, but a habit.&rdquo;
           </div>
-          <div className="text-xl md:text-2xl font-bold" style={{ fontFamily: '"Press Start 2P", monospace', color: '#8B4513', textShadow: '2px 2px 0px rgba(255,255,255,0.8)' }}>
-            - James Clear
+          <div className="text-xl md:text-2xl font-bold mt-8" style={{ fontFamily: 'var(--font-sans)', color: '#000000' }}>
+            - Aristotle
           </div>
         </div>
       </section>
