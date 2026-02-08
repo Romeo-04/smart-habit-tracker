@@ -116,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section - 3 Cards */}
+      {/* Features Section - 6 Cards */}
       <section
         id="features"
         className="relative py-24"
@@ -139,7 +139,7 @@ export default function Home() {
                   className="text-2xl font-bold text-center mt-5"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "#1a1a1a",
+                    color: "#4a4d7d",
                   }}
                 >
                   Multi-Cadence Habits
@@ -160,8 +160,8 @@ export default function Home() {
               <CardHeader>
                 <div className="flex mb-4 justify-center">
                   <Image
-                    src="/images/trophy.png"
-                    alt="Goals"
+                    src="/images/fire.png"
+                    alt="Streaks"
                     width={48}
                     height={48}
                     className="pixelated mt-10"
@@ -171,10 +171,10 @@ export default function Home() {
                   className="text-2xl font-bold text-center mt-5"
                   style={{
                     fontFamily: "var(--font-sans)",
-                    color: "#1a1a1a",
+                    color: "#4a4d7d",
                   }}
                 >
-                  Multi-Cadence Habits
+                  Streak Tracking
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -182,39 +182,136 @@ export default function Home() {
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Track both daily and weekly habits with flexible scheduling to match your routine.
+                  Real-time current and best streak calculations to keep you motivated and consistent.
                 </p>
               </CardContent>
             </Card>
 
-            {/* Insights Card */}
-            <Card className="border-8 border-gray-900 hover:translate-y-[-8px] transition-transform shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            {/* Dashboard Card */}
+            <Card className=" hover:translate-y-[-8px] max-h-80">
               <CardHeader>
-                <div className="flex justify-center mb-4">
+                <div className="flex mb-4 justify-center">
                   <Image
-                    src="/images/insights-icon.png"
-                    alt="Insights"
-                    width={128}
-                    height={128}
-                    className="pixelated"
+                    src="/images/bar-chart.png"
+                    alt="Dashboard"
+                    width={48}
+                    height={48}
+                    className="pixelated mt-10"
                   />
                 </div>
                 <CardTitle
-                  className="text-2xl font-bold text-center"
+                  className="text-2xl font-bold text-center mt-5"
                   style={{
-                    fontFamily: '"Press Start 2P", monospace',
-                    color: "#1a1a1a",
+                    fontFamily: "var(--font-sans)",
+                    color: "#4a4d7d",
                   }}
                 >
-                  INSIGHTS
+                  Interactive Dashboard
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p
                   className="text-center text-gray-800 leading-loose text-sm"
-                  style={{ fontFamily: '"Press Start 2P", monospace' }}
+                  style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Track your progress with beautiful charts
+                  Visualize your progress with interactive charts and insights to stay motivated and informed.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Heatmap Card */}
+            <Card className=" hover:translate-y-[-8px] max-h-80">
+              <CardHeader>
+                <div className="flex mb-4 justify-center">
+                  <Image
+                    src="/images/heatmap.png"
+                    alt="Heatmap"
+                    width={48}
+                    height={48}
+                    className="pixelated mt-10"
+                  />
+                </div>
+                <CardTitle
+                  className="text-2xl font-bold text-center mt-5"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#4a4d7d",
+                  }}
+                >
+                  Habit Heatmap
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p
+                  className="text-center text-gray-800 leading-loose text-sm"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
+                  GitHub-style activity visualization showing your consistency patterns at a glance.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Theme Card */}
+            <Card className=" hover:translate-y-[-8px] max-h-80">
+              <CardHeader>
+                <div className="flex mb-4 justify-center">
+                  <Image
+                    src="/images/moon.png"
+                    alt="Dark / Light Theme"
+                    width={48}
+                    height={48}
+                    className="pixelated mt-10"
+                  />
+                </div>
+                <CardTitle
+                  className="text-2xl font-bold text-center mt-5"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#4a4d7d",
+                  }}
+                >
+                  Dark / Light Theme
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p
+                  className="text-center text-gray-800 leading-loose text-sm"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
+                  Easy on the eyes — toggle between themes with your preference saved automatically.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Motivation Card */}
+            <Card className=" hover:translate-y-[-8px] max-h-80">
+              <CardHeader>
+                <div className="flex mb-4 justify-center">
+                  <Image
+                    src="/images/creativity.png"
+                    alt="Motivation"
+
+                    width={48}
+                    height={48}
+                    className="pixelated mt-10"
+                  />
+                </div>
+                <CardTitle
+                  className="text-2xl font-bold text-center mt-5"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#4a4d7d",
+                  }}
+                >
+                  Motivational Quotes
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p
+                  className="text-center text-gray-800 leading-loose text-sm"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
+                  Dynamic quotes and celebratory confetti when you hit milestones to keep the energy high.
                 </p>
               </CardContent>
             </Card>
