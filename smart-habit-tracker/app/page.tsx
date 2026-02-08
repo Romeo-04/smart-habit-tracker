@@ -32,32 +32,33 @@ export default function Home() {
           </h1>
         </div>
         <div className="flex space-x-4 items-center">
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" className="hover:bg-[#dcdde0]" asChild>
             <Link
               href="#features"
-              className="text-lg font-bold tracking-wider"
-              style={{ fontFamily: "var(--font-sans)", color: "#000000" }}
+              className="text-lg font-bold tracking-wider "
+              style={{ fontFamily: "var(--font-sans)"}}
             >
               Features
             </Link>
           </Button>
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" className="hover:bg-[#dcdde0]" asChild>
             <Link
               href="#about"
-              className="text-lg font-bold tracking-wider"
-              style={{ fontFamily: "var(--font-sans)", color: "#000000" }}
+              className="text-lg font-bold tracking-wider "
+              style={{ fontFamily: "var(--font-sans)"}}
             >
               How It Works
             </Link>
           </Button>
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" className="hover:bg-[#dcdde0]" asChild>
             <Link
               href="#insights"
-              className="text-lg font-bold tracking-wider"
-              style={{ fontFamily: "var(--font-sans)", color: "#000000" }}
+              className="text-lg font-bold tracking-wider "
+              style={{ fontFamily: "var(--font-sans)"}}
             >
               Insights
             </Link>
+            
           </Button>
           <Button variant="default" asChild>
             <Link
@@ -71,7 +72,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section - Quote with Mountain Background */}
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center bg-cover bg-center">
         <div
           className="absolute inset-0 bg-linear-to-b white/70
@@ -101,10 +102,13 @@ export default function Home() {
             </div>
 
             <div className="flex items-center justify-center gap-4 mt-4">
-              <Button variant="default">Start Tracking</Button>
+              <Button variant="default">
+                <Link href="/auth/signin">Start Tracking</Link>
+              </Button>
               <Button variant="outline">
                 <Link href="#features">
                 How does it work? 
+                
                 </Link>
                 </Button> 
             </div>
@@ -115,74 +119,70 @@ export default function Home() {
       {/* Features Section - 3 Cards */}
       <section
         id="features"
-        className="relative py-24 bg-linear-to-b from-blue-400 to-blue-600"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px), repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px)",
-        }}
+        className="relative py-24"
       >
         <div className="container mx-auto px-8 md:px-16 lg:px-24">
           <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {/* Goals Card */}
-            <Card className="border-8 border-gray-900 hover:translate-y-[-8px] transition-transform shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <Card className=" hover:translate-y-[-8px] max-h-80">
               <CardHeader>
-                <div className="flex justify-center mb-4">
+                <div className="flex mb-4 justify-center">
                   <Image
-                    src="/images/goals-icon.png"
+                    src="/images/trophy.png"
                     alt="Goals"
-                    width={128}
-                    height={128}
-                    className="pixelated"
+                    width={48}
+                    height={48}
+                    className="pixelated mt-10"
                   />
                 </div>
                 <CardTitle
-                  className="text-2xl font-bold text-center"
+                  className="text-2xl font-bold text-center mt-5"
                   style={{
-                    fontFamily: '"Press Start 2P", monospace',
+                    fontFamily: "var(--font-sans)",
                     color: "#1a1a1a",
                   }}
                 >
-                  GOALS
+                  Multi-Cadence Habits
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p
                   className="text-center text-gray-800 leading-loose text-sm"
-                  style={{ fontFamily: '"Press Start 2P", monospace' }}
+                  style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Set daily habits or flexible weekly targets
+                  Track both daily and weekly habits with flexible scheduling to match your routine.
                 </p>
               </CardContent>
             </Card>
 
             {/* Streaks Card */}
-            <Card className="border-8 border-gray-900 hover:translate-y-[-8px] transition-transform shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+            <Card className=" hover:translate-y-[-8px] max-h-80">
               <CardHeader>
-                <div className="flex justify-center mb-4">
+                <div className="flex mb-4 justify-center">
                   <Image
-                    src="/images/streaks-icon.png"
-                    alt="Streaks"
-                    width={128}
-                    height={128}
-                    className="pixelated"
+                    src="/images/trophy.png"
+                    alt="Goals"
+                    width={48}
+                    height={48}
+                    className="pixelated mt-10"
                   />
                 </div>
                 <CardTitle
-                  className="text-2xl font-bold text-center"
+                  className="text-2xl font-bold text-center mt-5"
                   style={{
-                    fontFamily: '"Press Start 2P", monospace',
+                    fontFamily: "var(--font-sans)",
                     color: "#1a1a1a",
                   }}
                 >
-                  STREAKS
+                  Multi-Cadence Habits
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p
                   className="text-center text-gray-800 leading-loose text-sm"
-                  style={{ fontFamily: '"Press Start 2P", monospace' }}
+                  style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Watch your streaks grow day by day
+                  Track both daily and weekly habits with flexible scheduling to match your routine.
                 </p>
               </CardContent>
             </Card>
