@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
 import Container from "./_components/Container";
 import LightRays from "@/components/LightRays";
+import Particles from "@/components/Particles";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,21 +26,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${merriweather.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${merriweather.variable}`}
+      suppressHydrationWarning
+    >
       <body className={`min-h-full`}>
         <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
-        <LightRays
-          raysOrigin="top-left"
-          raysColor="#ffffff"
-          raysSpeed={1.0}
-          lightSpread={1.0}
-          rayLength={1.7}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="custom-rays"
-        />
+          <LightRays
+            raysOrigin="top-left"
+            raysColor="#ffffff"
+            raysSpeed={1.0}
+            lightSpread={1.0}
+            rayLength={1.7}
+            followMouse={true}
+            mouseInfluence={0.1}
+            noiseAmount={0.1}
+            distortion={0.05}
+            className="custom-rays"
+          />
         </div>
         <Container>{children}</Container>
       </body>
