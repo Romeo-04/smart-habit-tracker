@@ -133,10 +133,15 @@ export default function Home() {
           />
         </div>
 
-        <div className="container relative z-10 mx-auto px-8 md:px-16 lg:px-24 ">
-          <div className="text-3xl flex font-semibold items-center justify-center text-center mb-10"
+        <div className="container relative z-10 mx-auto px-4 md:px-8 lg:px-16 ">
+          <div className="text-3xl flex font-semibold items-center justify-center text-center mb-3"
           style = {{ fontFamily: "var(--font-sans)"}}>
               Everything you need to build lasting habits
+            </div>
+
+            <div className="text-sm flex font-semibold items-center justify-center text-center mb-10"
+          style = {{ fontFamily: "var(--font-serif)", color: "#6f7e96"}}>
+              Keep the consistency while enjoying the journey
             </div>
           <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {/* Goals Card */}
@@ -163,7 +168,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="py-0">
                 <p
-                  className="text-center text-gray-800 leading-loose text-xs"
+                  className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
                   Track both daily and weekly habits with flexible scheduling to
@@ -194,7 +199,7 @@ export default function Home() {
                   Streak Tracking
                 </CardTitle>
               </CardHeader>
-              <CardContent className="py-0">
+              <CardContent className="py-0 mb-5">
                 <p
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
@@ -227,7 +232,7 @@ export default function Home() {
                   Interactive Dashboard
                 </CardTitle>
               </CardHeader>
-              <CardContent className="py-0">
+              <CardContent className="py-0 ">
                 <p
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
@@ -240,7 +245,7 @@ export default function Home() {
 
             {/* Heatmap Card */}
             <Card className="hover:shadow-lg hover:translate-y-[-8px] max-h-80 transition duration-500">
-              <CardHeader>
+              <CardHeader className="py-2">
                 <div className="flex mb-4 justify-center">
                   <Image
                     src="/images/heatmap.png"
@@ -260,7 +265,7 @@ export default function Home() {
                   Habit Heatmap
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="py-0 mb-5">
                 <p
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
@@ -273,7 +278,7 @@ export default function Home() {
 
             {/* Theme Card */}
             <Card className="hover:shadow-lg hover:translate-y-[-8px] max-h-80 transition duration-500">
-              <CardHeader>
+              <CardHeader className="py-2">
                 <div className="flex mb-4 justify-center">
                   <Image
                     src="/images/moon.png"
@@ -306,7 +311,7 @@ export default function Home() {
 
             {/* Motivation Card */}
             <Card className="hover:shadow-lg hover:translate-y-[-8px] max-h-80 transition duration-500">
-              <CardHeader>
+              <CardHeader className="py-2">
                 <div className="flex mb-4 justify-center">
                   <Image
                     src="/images/creativity.png"
@@ -331,7 +336,7 @@ export default function Home() {
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Dynamic quotes and celebratory confetti when you hit
+                  Dynamic quotes and confetti when you hit
                   milestones to keep the energy high.
                 </p>
               </CardContent>
