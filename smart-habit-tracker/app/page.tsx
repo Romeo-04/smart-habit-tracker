@@ -27,7 +27,7 @@ export default function Home() {
           />
           <h1
             className="text-3xl font-bold tracking-wider inter"
-            style={{ fontFamily: "var(--font-sans)", color: "#000000" }}
+            style={{ fontFamily: "var(--font-sans)", color: "#252429" }}
           >
             TrackHab
           </h1>
@@ -102,12 +102,23 @@ export default function Home() {
               Build better habits, one day at a time.
             </div>
 
-            <div className="flex items-center justify-center gap-4 mt-4">
-              <Button variant="default">
-                <Link href="/auth/signin">Start Tracking</Link>
+            <div className="flex items-center justify-center gap-6 mt-6">
+              <Button
+                variant="default"
+                className="w-46 h-12 hover:translate-y-[-3px] transition duration-300"
+              >
+                <Link href="/auth/signin" className="text-lg">
+                  Start Tracking
+                </Link>
               </Button>
-              <Button variant="outline">
-                <Link href="#features">How does it work?</Link>
+              <Button
+                variant="outline"
+                className="w-46 h-12 hover:translate-y-[-3px] transition duration-300"
+              >
+                <Link href="#features" className="text-lg">
+                  {" "}
+                  How does it work?
+                </Link>
               </Button>
             </div>
           </div>
@@ -134,15 +145,19 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 mx-auto px-4 md:px-8 lg:px-16 ">
-          <div className="text-3xl flex font-semibold items-center justify-center text-center mb-3"
-          style = {{ fontFamily: "var(--font-sans)"}}>
-              Everything you need to build lasting habits
-            </div>
+          <div
+            className="text-3xl flex font-semibold items-center justify-center text-center mb-3"
+            style={{ fontFamily: "var(--font-sans)" }}
+          >
+            Everything you need to build lasting habits
+          </div>
 
-            <div className="text-sm flex font-semibold items-center justify-center text-center mb-10"
-          style = {{ fontFamily: "var(--font-serif)", color: "#6f7e96"}}>
-              Keep the consistency while enjoying the journey
-            </div>
+          <div
+            className="text-sm flex font-semibold items-center justify-center text-center mb-10"
+            style={{ fontFamily: "var(--font-serif)", color: "#6f7e96" }}
+          >
+            Keep the consistency while enjoying the journey
+          </div>
           <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {/* Goals Card */}
             <Card className="hover:shadow-lg hover:translate-y-[-8px] max-h-80 transition duration-500">
@@ -212,7 +227,7 @@ export default function Home() {
 
             {/* Dashboard Card */}
             <Card className="hover:shadow-lg hover:translate-y-[-8px] max-h-80 transition duration-500">
-              <CardHeader className="py-2"> 
+              <CardHeader className="py-2">
                 <div className="flex mb-4 justify-center">
                   <Image
                     src="/images/bar-chart.png"
@@ -336,8 +351,8 @@ export default function Home() {
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Dynamic quotes and confetti when you hit
-                  milestones to keep the energy high.
+                  Dynamic quotes and confetti when you hit milestones to keep
+                  the energy high.
                 </p>
               </CardContent>
             </Card>
@@ -345,41 +360,122 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="h-24 bg-gradient-to-b from-[#f7f7f7] to-white"></div>
       {/* CTA Section - Are You Ready */}
-      <section
-        className="relative py-40 bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/cta-bg.png)" }}
-      >
-        <div className="absolute inset-0 bg-linear-to-b from-blue-50/80 to-blue-100/80"></div>
+      <section className="bg-white relative py-40">
+        <div className="absolute inset-0 "></div>
         <div className="relative z-10 text-center px-8">
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12"
-            style={{
-              fontFamily: '"Press Start 2P", monospace',
-              color: "#00008B",
-              textShadow: "4px 4px 0px rgba(255,255,255,0.8)",
-            }}
+            className="text-4xl md:text-4xl lg:text-4xl font-bold mb-12"
+            style={{ fontFamily: "var(--font-sans)" }}
           >
-            Are you ready?
+            How it works
           </h2>
-          <p
-            className="text-xl md:text-2xl mb-16 font-bold"
-            style={{
-              fontFamily: '"Press Start 2P", monospace',
-              color: "#1a1a1a",
-              textShadow: "2px 2px 0px rgba(255,255,255,0.8)",
-            }}
-          >
-            Start building better habits today
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="px-12 py-6 bg-blue-400 hover:bg-blue-500 text-white text-xl border-4 border-gray-900 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-4px] transition-all"
-            style={{ fontFamily: '"Press Start 2P", monospace' }}
-          >
-            <Link href="/auth/signin">SIGN UP</Link>
-          </Button>
+
+          <div className="flex flex-row gap-5 items-center px-20">
+            <Card className="border-none shadow-none max-h-80">
+              <CardHeader className="py-2">
+                <div className="flex mb-4 justify-center">
+                  <Card className = "mt-10 w-20 h-20 items-center justify-center flex ">
+                  <Image
+                    src="/images/creativity.png"
+                    alt="Motivation"
+                    width={36}
+                    height={36}
+                    className="pixelated"
+                  />
+                  </Card>
+                </div>
+                <CardTitle
+                  className="text-2xl font-bold text-center mt-3"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#4a4d7d",
+                  }}
+                >
+                  Motivational Quotes
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p
+                  className="text-center text-gray-800 leading-loose text-sm"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
+                  Dynamic quotes and confetti when you hit milestones to keep
+                  the energy high.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-none max-h-80">
+              <CardHeader className="py-2">
+                <div className="flex mb-4 justify-center">
+                  <Card className = "mt-10 w-20 h-20 items-center justify-center flex ">
+                  <Image
+                    src="/images/creativity.png"
+                    alt="Motivation"
+                    width={36}
+                    height={36}
+                    className="pixelated"
+                  />
+                  </Card>
+                </div>
+                <CardTitle
+                  className="text-2xl font-bold text-center mt-3"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#4a4d7d",
+                  }}
+                >
+                  Motivational Quotes
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p
+                  className="text-center text-gray-800 leading-loose text-sm"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
+                  Dynamic quotes and confetti when you hit milestones to keep
+                  the energy high.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-none shadow-none max-h-80">
+              <CardHeader className="py-2">
+                <div className="flex mb-4 justify-center">
+                  <Card className = "mt-10 w-20 h-20 items-center justify-center flex ">
+                  <Image
+                    src="/images/creativity.png"
+                    alt="Motivation"
+                    width={36}
+                    height={36}
+                    className="pixelated"
+                  />
+                  </Card>
+                </div>
+                <CardTitle
+                  className="text-2xl font-bold text-center mt-3"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    color: "#4a4d7d",
+                  }}
+                >
+                  Motivational Quotes
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p
+                  className="text-center text-gray-800 leading-loose text-sm"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
+                  Dynamic quotes and confetti when you hit milestones to keep
+                  the energy high.
+                </p>
+              </CardContent>
+            </Card>
+
+          </div>
         </div>
       </section>
     </div>
