@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircleFadingArrowUpIcon } from "lucide-react";
 import Particles from "@/components/Particles";
+import SplitText from "@/components/SplitText";
 
 export const metadata: Metadata = {
   title: "TrackHab",
@@ -84,8 +85,36 @@ export default function Home() {
             className="text-3xl md:text-3xl lg:text-4xl font-bold leading-relaxed mt-15 mb-3 drop-shadow-lg"
             style={{ fontFamily: "var(--font-serif)", color: "#000000" }}
           >
-            &ldquo; We are what we repeatedly do. <br />
-            Excellence, then, is not an act, but a habit.&rdquo;
+
+
+
+<SplitText
+  text="We are what we repeatedly do."
+  className="text-4xl font-semibold text-center"
+  delay={50}
+  duration={1.25}
+  ease="power3.out"
+  splitType="chars"
+  from={{ opacity: 0, y: 40 }}
+  to={{ opacity: 1, y: 0 }}
+  threshold={0.1}
+  rootMargin="-100px"
+  textAlign="center"
+/>
+<br/>
+<SplitText
+  text="Excellence, then, is not an act, but a habit."
+  className="text-4xl font-semibold text-center"
+  delay={50}
+  duration={1.25}
+  ease="power3.out"
+  splitType="chars"
+  from={{ opacity: 0, y: 40 }}
+  to={{ opacity: 1, y: 0 }}
+  threshold={0.1}
+  rootMargin="-100px"
+  textAlign="center"
+/>
           </div>
           <div
             className="text-xl md:text-2xl font-bold mt-8"
@@ -115,7 +144,7 @@ export default function Home() {
                 variant="outline"
                 className="w-46 h-12 hover:translate-y-[-3px] transition duration-300"
               >
-                <Link href="#features" className="text-lg">
+                <Link href="#works" className="text-lg">
                   {" "}
                   How does it work?
                 </Link>
@@ -362,23 +391,29 @@ export default function Home() {
 
       <div className="h-24 bg-gradient-to-b from-[#f7f7f7] to-white"></div>
       {/* CTA Section - Are You Ready */}
-      <section className="bg-white relative py-40">
+      <section id="works" className="bg-white relative py-40">
         <div className="absolute inset-0 "></div>
         <div className="relative z-10 text-center px-8">
           <h2
-            className="text-4xl md:text-4xl lg:text-4xl font-bold mb-12"
+            className="text-4xl md:text-4xl lg:text-4xl font-bold mb-5"
             style={{ fontFamily: "var(--font-sans)" }}
           >
             How it works
           </h2>
+          <h3 className = "m-5 mb-10" style={{ fontFamily: "var(--font-serif)", color: "#6f7e96" }}>
+            Three simple steps to transform your daily routine.
+          </h3>
 
-          <div className="flex flex-row gap-5 items-center px-20">
-            <Card className="border-none shadow-none max-h-80">
+          <div className="flex flex-row gap-8 items-center px-20">
+            <Card className="border-none shadow-none max-w-100 max-h-80">
               <CardHeader className="py-2">
                 <div className="flex mb-4 justify-center">
-                  <Card className = "mt-10 w-20 h-20 items-center justify-center flex ">
+                  <Card className = "relative mt-10 w-20 h-20 items-center justify-center flex ">
+                  <span className="absolute -top-2 -right-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#33355c] text-white text-xs font-bold">
+                    1
+                  </span>
                   <Image
-                    src="/images/creativity.png"
+                    src="/images/pencil.svg"
                     alt="Motivation"
                     width={36}
                     height={36}
@@ -387,13 +422,13 @@ export default function Home() {
                   </Card>
                 </div>
                 <CardTitle
-                  className="text-2xl font-bold text-center mt-3"
+                  className="text-xl font-bold text-center mt-3"
                   style={{
                     fontFamily: "var(--font-sans)",
                     color: "#4a4d7d",
                   }}
                 >
-                  Motivational Quotes
+                  Set your Habits
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -401,18 +436,21 @@ export default function Home() {
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Dynamic quotes and confetti when you hit milestones to keep
-                  the energy high.
+                  Define daily or weekly habits with custom categories and goals.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-none max-h-80">
+            <Card className="border-none shadow-none max-w-100 max-h-80">
               <CardHeader className="py-2">
                 <div className="flex mb-4 justify-center">
-                  <Card className = "mt-10 w-20 h-20 items-center justify-center flex ">
+                  <Card className = "relative mt-10 w-20 h-20 items-center justify-center flex ">
+                    <span className="absolute -top-2 -right-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#33355c] text-white text-xs font-bold"
+                    style = {{fontFamily: "var(--font-sans)"}}>
+                    2
+                  </span>
                   <Image
-                    src="/images/creativity.png"
+                    src="/images/progress.svg"
                     alt="Motivation"
                     width={36}
                     height={36}
@@ -421,13 +459,13 @@ export default function Home() {
                   </Card>
                 </div>
                 <CardTitle
-                  className="text-2xl font-bold text-center mt-3"
+                  className="text-xl font-bold text-center mt-3"
                   style={{
                     fontFamily: "var(--font-sans)",
                     color: "#4a4d7d",
                   }}
                 >
-                  Motivational Quotes
+                  Track your Progress
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -435,18 +473,21 @@ export default function Home() {
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Dynamic quotes and confetti when you hit milestones to keep
-                  the energy high.
+                  One-click completions with instant visual feedback and streaks.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-none max-h-80">
+            <Card className="border-none shadow-none max-w-100 max-h-80">
               <CardHeader className="py-2">
                 <div className="flex mb-4 justify-center">
-                  <Card className = "mt-10 w-20 h-20 items-center justify-center flex ">
+                  <Card className = "relative mt-10 w-20 h-20 items-center justify-center flex ">
+                    <span className="absolute -top-2 -right-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#33355c] text-white text-xs font-bold"
+                    style = {{fontFamily: "var(--font-sans)"}}>
+                    3
+                  </span>
                   <Image
-                    src="/images/creativity.png"
+                    src="/images/stocks.svg"
                     alt="Motivation"
                     width={36}
                     height={36}
@@ -455,13 +496,13 @@ export default function Home() {
                   </Card>
                 </div>
                 <CardTitle
-                  className="text-2xl font-bold text-center mt-3"
+                  className="text-xl font-bold text-center mt-3"
                   style={{
                     fontFamily: "var(--font-sans)",
                     color: "#4a4d7d",
                   }}
                 >
-                  Motivational Quotes
+                 See Your Transformation
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -469,8 +510,7 @@ export default function Home() {
                   className="text-center text-gray-800 leading-loose text-sm"
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  Dynamic quotes and confetti when you hit milestones to keep
-                  the energy high.
+                  Analyze streaks, heatmaps, and stats to celebrate growth.
                 </p>
               </CardContent>
             </Card>
