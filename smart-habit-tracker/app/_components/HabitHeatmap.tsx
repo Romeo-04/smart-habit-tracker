@@ -29,17 +29,17 @@ export function HabitHeatmap({ logs, habitTitle }: HabitHeatmapProps) {
         {habitTitle} - Last 12 Weeks
       </h3>
       
-      <div className="flex gap-1 overflow-x-auto">
+      <div className="flex gap-2.5 overflow-x-auto">
         {weeks.map((week, weekIndex) => (
-          <div key={weekIndex} className="flex flex-col gap-1">
+          <div key={weekIndex} className="flex flex-col gap-2.5">
             {week.map((day, dayIndex) => {
               const isCompleted = getIntensity(day);
               const isToday = day === format(today, 'yyyy-MM-dd');
-              
+
               return (
                 <div
                   key={day}
-                  className={`w-3 h-3 rounded-sm transition-colors ${
+                  className={`w-4 h-4 rounded-full transition-colors ${
                     isCompleted
                       ? 'bg-green-500 dark:bg-green-600'
                       : 'bg-gray-200 dark:bg-gray-700'
@@ -51,12 +51,12 @@ export function HabitHeatmap({ logs, habitTitle }: HabitHeatmapProps) {
           </div>
         ))}
       </div>
-      
+
       <div className="flex items-center gap-3 mt-4 text-xs text-gray-600 dark:text-gray-400">
         <span>Less</span>
-        <div className="flex gap-1">
-          <div className="w-3 h-3 bg-gray-200 dark:bg-gray-700 rounded-sm" />
-          <div className="w-3 h-3 bg-green-500 dark:bg-green-600 rounded-sm" />
+        <div className="flex gap-2.5">
+          <div className="w-4 h-4 bg-gray-200 dark:bg-gray-700 rounded-full" />
+          <div className="w-4 h-4 bg-green-500 dark:bg-green-600 rounded-full" />
         </div>
         <span>More</span>
       </div>

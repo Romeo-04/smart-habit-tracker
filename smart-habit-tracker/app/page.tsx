@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircleFadingArrowUpIcon } from "lucide-react";
 import Particles from "@/components/Particles";
 import SplitText from "@/components/SplitText";
+import LightRays from "@/components/LightRays";
 
 export const metadata: Metadata = {
   title: "TrackHab",
@@ -16,6 +17,21 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen">
+      {/* Light Rays - landing page only */}
+      <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
+        <LightRays
+          raysOrigin="top-left"
+          raysColor="#ffffff"
+          raysSpeed={1.0}
+          lightSpread={1.0}
+          rayLength={1.7}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
+      </div>
       {/* Navigation */}
       <nav className="px-8 md:px-16 lg:px-16 py-6 flex justify-between items-center absolute top-0 left-0 right-0 z-20">
         <div className="flex items-center space-x-4">

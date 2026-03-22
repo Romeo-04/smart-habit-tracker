@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 export default function Container({children}:{children : React.ReactNode}) {
     const pathname = usePathname();
     
-    // No container constraints for landing page
-    if (pathname === '/' || pathname === '/landing') {
+    // No container constraints for landing page or auth pages
+    if (pathname === '/' || pathname === '/landing' || pathname.startsWith('/auth')) {
         return <>{children}</>;
     }
     
